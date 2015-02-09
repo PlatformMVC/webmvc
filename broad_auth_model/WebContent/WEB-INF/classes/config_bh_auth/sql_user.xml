@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>  
 <!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
 <sqlMap namespace="user">
-	<typeAlias alias="TbUser" type="com.broad.auth.model.TbUser"/>
+	<typeAlias alias="TbUser" type="com.platform.base.model.TbUser"/>
  	
  	<!-- 根据用户登陆名称查找用户信息：用户登录时使用 -->
  	<select id="queryUserByName" parameterClass="string" resultClass="TbUser">

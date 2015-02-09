@@ -158,6 +158,24 @@ h3 a {
 	padding-top: 12px;
 }
 
+.logo {
+	float: left ;
+	padding: 0 30px 0 130px ;
+	font: 200%/240% "微软雅黑"; 
+	color: #fff;
+	background: url(../images/logo.png) no-repeat 0 center; 
+}
+
+.login_logo {
+	margin-left: 15px;
+	padding-left: 128px;
+	line-height: 70px;
+	color: #FFF;
+	font-family: "微软雅黑";
+	font-size: 130%;
+	background: url(../images/logo.png) no-repeat left center;
+}
+
 #top-navigation {
 	float: right;
 	white-space: nowrap;

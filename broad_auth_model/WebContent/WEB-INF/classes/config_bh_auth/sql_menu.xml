@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>  
 <!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
 <sqlMap namespace="menu">
-	<typeAlias alias="TbMenu" type="com.broad.auth.model.TbMenu"/>
+	<typeAlias alias="TbMenu" type="com.platform.base.model.TbMenu"/>
 	<resultMap class="TbMenu" id="menuMap">
 		<result property="id" column="id"/>
 		<result property="description" column="description"/>
@@ -11,6 +11,21 @@
 		<result property="typeOrder" column="typeOrder"/>
 		<result property="parentId"  column="parentId" />
 	</resultMap>
+	
+	<!-- 查询某个用户的操作权限列表：根据用户的角色ID -->
+ 	<select id="selectMenuByRoleId" parameterClass="int" resultClass="TbMenu">
+ 		SELECT 	id, 
+			description , 
+			NAME as name, 
+			url, 
+			t_order as typeOrder, 
+			TYPE as type , 
+			parent_id as parentId
+			 
+			FROM tb_role_menu  AS a LEFT JOIN tb_menu AS b 
+ 			ON a.menu_id=b.id WHERE a.role_id=#roleId#
+ 			order by id
+ 	</select>
 	
 	<!-- 查询顶层菜单(一级菜单和二级菜单)：目前只支持两级菜单 -->
 	<select id="selectAllMenuIds" resultClass="TbMenu">

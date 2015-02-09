@@ -17,9 +17,9 @@ xsi:schemaLocation="http://www.springframework.org/schema/beans
 	<!-- 启动注解驱动的Spring MVC功能，注册请求url和注解POJO类方法的映射-->
 	<mvc:annotation-driven/>  
 	<context:annotation-config></context:annotation-config>
-	<context:component-scan base-package="com.broad.auth.action" />
-	<context:component-scan base-package="com.broad.auth.dao" />
-	<context:component-scan base-package="com.broad.auth.service" />
+	<context:component-scan base-package="com.platform.base.action" />
+	<context:component-scan base-package="com.platform.base.dao" />
+	<context:component-scan base-package="com.platform.base.service" />
 	<!-- 添加自动代理功能 -->  
     <aop:aspectj-autoproxy proxy-target-class="true"/>  
   
