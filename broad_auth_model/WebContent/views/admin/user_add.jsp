@@ -11,7 +11,7 @@
 	</head>
 	<script type="text/javascript">
 		var path = '<%=basePath%>';
-		function sumbit(){
+		function sumbitAdd(){
 			var loginName = $("#loginName").val();
 			if(loginName==''){
 				$("#msgLoginName").text("请输入登录名！");
@@ -66,13 +66,13 @@
 			});
 		}
 		
-		function cancle(){
+		function cancelAdd(){
 			$("#resultMsg").text('');
 			history.back(-1);
 		}
 	</script>
 	
-	<body class="shell" onkeydown="if(event.keyCode == 13){sumbit();}">
+	<body class="shell" onkeydown="if(event.keyCode == 13){sumbitAdd();}">
 		<!-- Box -->
 		<div class="box">
 			<!-- Box Head -->
@@ -111,8 +111,8 @@
 				
 				<!-- Form Buttons -->
 				<div class="buttons">
-					<input type="button" onClick="sumbit();" class="button" value="注册" />
-					<input type="button" onClick="cancle();" class="button" value="取消" />
+					<input type="button" onClick="sumbitAdd();" class="button" value="注册" />
+					<input type="button" onClick="cancelAdd();" class="button" value="取消" />
 				</div>
 				<!-- End Form Buttons -->
 			</form>

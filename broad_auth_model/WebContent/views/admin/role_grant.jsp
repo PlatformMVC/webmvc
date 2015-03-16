@@ -131,29 +131,29 @@
  <body onkeydown="if(event.keyCode == 13){commit();}">
 	<div class="shell">
 			<!-- Box -->
-				<div class="box" style="width:80%;">
+				<div class="box" style="width:70%;margin-left:10%;height:370px;">
 					<!-- Box Head -->
 					<div class="box-head">
-							<h2 class="left">角色权限管理(请勾选所需的菜单，点击保存按钮或者敲击Enter键完成保存)</h2>
+							<h2 class="left" style="color: #fff;font-weight: normal;font-size: 15px;">角色权限管理(请勾选所需的菜单，点击保存按钮或者敲击Enter键完成保存)</h2>
 					</div>
 					<form action="" method="post">
 							<!-- Form -->
 							<div class="form">
-								<label>角色名称: </label>
-								<input id="name"  readonly type="text" class="field size5"/>
+								<label style="float:left;">角色名称: </label>
+								<input id="name"  readonly style="margin-left:80px;" type="text" class="field size5"/>
 								
-								<label>角色描述: </label>
-								<input id="desc" readonly type="text" class="field size5"/>
-								<label>菜单选择: </label>
+								<label style="float:left;">角色描述: </label>
+								<input id="desc" readonly style="margin-left:80px;" type="text" class="field size5"/>
+								<label style="float:left;">菜单选择: </label>
 							</div>
-						    <div class="zTreeDemoBackground" style="margin-left:100px;height:300px;">
-								<ul id="treeDemo" class="ztree" style="height:80%;"></ul>
+						    <div class="zTreeDemoBackground" style="margin-left:94px;height:205px;">
+								<ul id="treeDemo" class="ztree" style="height:85%;width:392px;"></ul>
 							</div>
 							<div class="buttons">
 									<span id="resultInfo" style="color:green;"></span>
 									<span>&nbsp;&nbsp;&nbsp;</span>
-									<input type="button" onClick="commit();"  class="button" value="保存" />
-									<input type="button" onClick="goback();"  class="button" value="返回" />
+									<input type="button" onclick="commit();"  class="button" value="保存" />
+									<input type="button" onclick="goback();"  class="button" value="返回" />
 							</div>
 					</form>
 				</div>

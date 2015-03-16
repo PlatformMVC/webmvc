@@ -511,14 +511,26 @@ textarea.size1 {
 	padding-left: 4px;
 }
 
-.add-button,.add-button span {
+.add-button{
 	float: left;
 	height: 26px;
 	background: url(./../images/add-button.gif) no-repeat 0 0;
-	padding: 0 0 0 28px;
+	padding: 0 0 10px 28px;
+}
+
+.del-button{
+	float: left;
+	height: 26px;
+	background: url(./../images/close.gif) no-repeat 0 0;
+	padding: 0 20px 10px 28px;
 }
 
 .add-button span {
+	background-position: right 0;
+	padding: 0 10px 0 0;
+}
+
+.del-button span  {
 	background-position: right 0;
 	padding: 0 10px 0 0;
 }

@@ -9,6 +9,7 @@
 		<link rel="stylesheet" href="<%=basePath %>resource/pagination/pagination.css" type="text/css" media="all" />
 		<script type='text/javascript' src="<%=basePath%>resource/js/jquery-1.8.2.min.js"></script>
 		<script type='text/javascript' src="<%=basePath%>resource/pagination/pagination.js"></script>
+		<script type='text/javascript' src="<%=basePath%>resource/js/textUtil.js"></script>
 	</head>
 	<script type="text/javascript">
 		var path = '<%=basePath%>';
@@ -98,7 +99,7 @@
 		
 		//操作连接拼接
 		function formatOperation(user,index){
-			var status = user.status
+			var status = user.status;
 			var statusTable = formatStatus(status,2);
 			var str = '';
 			if(status==0){//启用
@@ -158,7 +159,75 @@
 		}
 		
 		function addUser(){
-			window.location.href=path+"views/user_add.jsp";
+			//弹出信息框
+			$("#div_addop").show();
+			$(".mask").show();
+		}
+		
+		function sumbitAdd(){
+			var loginName = $("#addloginName").val();
+			if(loginName==''){
+				$("#msgLoginName").text("请输入登录名！");
+				$("#addloginName").focus();
+				return;
+			}
+			
+			var userPwd = $("#userPwd").val();
+			if(userPwd==''){
+				$("#msgPwd").text("请输入登录密码！");
+				$("#userPwd").focus();
+				return;
+			}
+			var userName = $("#adduserName").val();
+			if(userName==''){
+				$("#msgUserName").text("请输入用户名！");
+				$("#adduserName").focus();
+				return;
+			}
+			
+			var email = $("#email").val();
+			if(email==''||!email.isEmail()){
+				$("#msgEmail").text("请输入有效邮箱例如:xxx@xxx.com！");
+				$("#email").focus();
+				return;
+			}
+			
+			//提交后台Action
+			$.ajax({
+				type : 'POST',
+				url : path+'submitAdd', //通过url传递name参数
+				data : {
+					loginName:loginName,
+					userPwd:userPwd,
+					userName:userName,
+					email:email,
+					nickname:$("#nickname").val(),
+					status:1
+					},
+				dataType : 'json',
+				success:function(data){
+					if(data.status){
+						cancelAdd();
+						queryUsers();
+					}else{
+						$("add#resultMsg").text(data.description);
+					}
+				},
+				error:function(e){
+					alert("Net error ,try later.")
+				}
+			});
+		}
+		
+		function cancelAdd(){
+			$("#addloginName").val('');
+			$("#userPwd").val('');
+			$("#adduserName").val('');
+			$("#email").val('');
+			$("#nickname").val('');
+			$("#addresultMsg").text('');
+			$("#div_addop").hide();
+			$(".mask").hide();
 		}
 		
 		function grantRole(index){
@@ -329,5 +398,50 @@
 			</form>
 		</div>	
 	
+	    <!-- 弹出框DIV，两个同时显示，mask负责将背景灰掉；div_addop负责显示 -->
+	    <div class="mask" style="display:none;"></div>
+	    <div class="box"  style="display:none;position:absolute;top:30%;left:50%;width: 520px;height:auto;z-index: 999; margin: -120px 0px 0px -260px;" id="div_addop">
+			<!-- Box Head -->
+			<div class="box-head">
+				<h2>添加新用户</h2>
+			</div>
+			<!-- End Box Head -->
+			
+			<form action="" method="post">
+				<!-- Form -->
+				<div class="form">
+					<span class="req">不能为空,最长30个字符</span>
+					<label>登陆名: <span style="color:red;" id="msgLoginName">(系统登陆账号:必填)</span></label>
+					<input maxlength="30" type="text" class="field size4" id="addloginName"/>
+					
+					<span class="req">不能为空,最长30个字符</span>
+					<label>密&nbsp;码 :<span style="color:red;" id="msgPwd">(必填)</span></label>
+					<input maxlength="30" type="password" class="field size4" id="userPwd"/>
+					
+					<span class="req">不能为空,最长50个字符</span>
+					<label>用户名: <span style="color:red;" id="msgUserName">(标识您的身份的:必填)</span></label>
+					<input maxlength="50" type="text" class="field size4" id="adduserName"/>
+					
+					<span class="req">最长30个字符</span>
+					<label>昵&nbsp;称: <span style="color:red;" id="msgNickName">(选填)</span></label>
+					<input maxlength="30" type="text" class="field size4" id="nickname"/>
+					
+					<span class="req">不能为空,最长100个字符</span>
+					<label>邮&nbsp;箱 :<span style="color:red;" id="msgEmail">(密码找回使用:必填)</span></label>
+					<input maxlength="100" type="text" class="field size4" id="email"/>
+					<br/>
+					<h2><span id="addresultMsg" style="color:red;"></span></h2>
+					<br/>
+				</div>
+				<!-- End Form -->
+				
+				<!-- Form Buttons -->
+				<div class="buttons">
+					<input type="button" onClick="sumbitAdd();" class="button" value="保存" />
+					<input type="button" onClick="cancelAdd();" class="button" value="取消" />
+				</div>
+				<!-- End Form Buttons -->
+			</form>
+		</div>	
 	</body>
 </html>

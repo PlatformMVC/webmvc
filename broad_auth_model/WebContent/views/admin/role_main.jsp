@@ -220,7 +220,7 @@
 	    <div class="box"  style="display:none;position:absolute;top:50%;left:50%;width: 520px;height:auto;z-index: 999; margin: -150px 0px 0px -260px;" id="addDiv">
 				<!-- Box Head -->
 				<div class="box-head">
-					<h2 class="left">添加新角色(点击保存按钮或者敲击Enter键完成保存)</h2>
+					<h2 class="left" style="color: #fff;font-weight: normal;font-size: 15px;">添加新角色(点击保存按钮或者敲击Enter键完成保存)</h2>
 				</div>
 				
 				<form action="" method="post">
@@ -234,8 +234,8 @@
 						<input maxlength="30" type="text" class="field size5" id="description"/>
 					</div>
 					<div class="buttons">
-						<input type="button" onClick="commit();"  class="button" value="保存" />
-						<input type="button" onClick="cancel();"  class="button" value="取消" />
+						<input type="button" onclick="commit();"  class="button" value="保存" />
+						<input type="button" onclick="cancel();"  class="button" value="取消" />
 					</div>
 				</form>
 		</div>

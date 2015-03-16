@@ -258,57 +258,59 @@
 	
  <body onkeydown="if(event.keyCode == 13){sumbit();}">
 	  <div class="shell">
-			<div class="zTreeDemoBackground left" >
-			    <div style="display:none;vertical-align:middle;" id="noMenusDiv">
-					<span >目前系统没有菜单数据!</span><br/>
-					<span >请在右侧区域添加新菜单.</span>
-				</div>
-				<ul id="treeDemo" class="ztree"></ul>
-			</div>
-			
 			<!-- 详情 -->
-			<div class="box" style="float:left;width:70%;">
+			<div class="box">
 				<!-- Box Head -->
 				<div class="box-head">
-					<h4 class="left">菜单操作页</h4>
-					<!-- 没有菜单时，下列按钮不可见 -->
-					<div class="right" id="addBtnDiv">
-						<a href="javascript:addMenu(1);" class="add-button"><span >添加同级菜单</span></a>
-						<a href="javascript:addMenu(2);" class="add-button"><span >添加子菜单</span></a>
-						<a href="javascript:deletemenu();" class="add-button"><span >删除菜单</span></a> 
-					</div>
+					<h2 class="left" style="color: #fff;font-weight: normal;font-size: 15px;">菜单操作页</h2>
 				</div>
 				<!-- End Box Head -->
-				
-				<form action="" method="post">
-					<!-- Form -->
-					<div class="form">
-							<input id="id" type="hidden" value="" />
-							<input id="parentId" type="hidden" />
-							<input id="parentName" type="hidden" />
-							<input id="type" type="hidden" value="1"/>
-							<p>
-								<label>当前操作: <span id="actionInfo">查看菜单详情</span></label>
-							</p>						
-							<p>
-								<label>菜单名称: <span id="msgName"></span></label>
-								<input id="name" maxlength="30" type="text" class="field size5" />
-							</p>	
-							<p>
-								<label>菜单URL: <span id="msgUrl"></span></label>
-								<input id="url" maxlength="100" class="field size5"></input>
-							</p>	
-							<p>
-								<label>功能描述: </label>
-								<textarea id="description" maxlength="100" class="field size5" rows="3" cols="50" ></textarea>
-							</p>	
+				<div style="width:20%;float:left;height:100%;">
+					<div class="zTreeDemoBackground left" style="width:100%;height:100%;margin-top: -10px;margin-left: -86px;">
+					    <div style="display:none;vertical-align:middle;" id="noMenusDiv">
+							<span >目前系统没有菜单数据!</span><br/>
+							<span >请在右侧区域添加新菜单.</span>
+						</div>
+						<ul id="treeDemo" class="ztree" style="width:312px;height:329px;"></ul>
 					</div>
-					<div class="buttons">
-						<input type="button"  class="button" onclick="sumbit();" value="保存" />
-						<input type="button"  class="button" onclick="cancel();" value="取消" />
-					</div>
-					<!-- End Form -->
-				</form>
+				</div>
+				<div style="float:right;width:67%;background:#e0e0e0;height:100%;margin-left:-30px;border:1px solid #617775"> 
+					<form action="" method="post" >
+					    <!-- 没有菜单时，下列按钮不可见 -->
+						<div class="right" id="addBtnDiv" style="margin-top:10px;margin-right:20px;">
+							<a href="javascript:addMenu(1);"  ><span style="margin-right:10px;">添加同级菜单</span></a>
+							<a href="javascript:addMenu(2);"  ><span style="margin-right:10px;">添加子菜单</span></a>
+							<a href="javascript:deletemenu();" ><span>删除</span></a> 
+						</div>
+						<!-- Form -->
+						<div class="form">
+								<input id="id" type="hidden" value="" />
+								<input id="parentId" type="hidden" />
+								<input id="parentName" type="hidden" />
+								<input id="type" type="hidden" value="1"/>
+								<p>
+									<label>当前操作: <span id="actionInfo">查看菜单详情</span></label>
+								</p>						
+								<p>
+									<label>菜单名称: <span id="msgName"></span></label>
+									<input id="name" maxlength="30" type="text" class="field size5" />
+								</p>	
+								<p>
+									<label>菜单URL: <span id="msgUrl"></span></label>
+									<input id="url" maxlength="100" class="field size5"></input>
+								</p>	
+								<p>
+									<label>功能描述: </label>
+									<textarea id="description" maxlength="100" class="field size5" rows="3" cols="50" ></textarea>
+								</p>	
+						</div>
+						<div class="buttons">
+							<input type="button"  class="button" onclick="sumbit();" value="保存" />
+							<input type="button"  class="button" onclick="cancel();" value="取消" />
+						</div>
+						<!-- End Form -->
+					</form>
+				</div>
 			</div>
 		</div>
 		
