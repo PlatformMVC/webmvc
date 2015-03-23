@@ -113,13 +113,14 @@
 				success:function(data){
 					if(data.status){
 						/* window.location.href=path+"roleGrant?roleId="+roleId; */
-						$("#resultInfo").text("权限信息保存成功!");
+						$("#resultInfo").text("权限信息保存成功,3秒后返回权限管理首页!");
+						setTimeout(goback(),3000); 
 					}else{
 						alert(data.description);
 					}
 				},
 				error:function(e){
-					alert("Net error ,try later.")
+					alert("Net error ,try later.");
 				}
 			});
 		}
@@ -147,7 +148,7 @@
 								<label style="float:left;">菜单选择: </label>
 							</div>
 						    <div class="zTreeDemoBackground" style="margin-left:94px;height:205px;">
-								<ul id="treeDemo" class="ztree" style="height:85%;width:392px;"></ul>
+								<ul id="treeDemo" class="ztree" style="height:85%;width:392px;border:solid 1px #d3cfc7;"></ul>
 							</div>
 							<div class="buttons">
 									<span id="resultInfo" style="color:green;"></span>

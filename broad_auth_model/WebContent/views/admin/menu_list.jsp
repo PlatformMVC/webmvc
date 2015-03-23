@@ -103,7 +103,7 @@
   		
   		//添加菜单:type=1同级；2子菜单
   		function addMenu(type){
-  			var info = "为编号为"+$("#id").val()+",名称为"+$("#parentName").val()+"的菜单"
+  			var info = "为编号为"+$("#id").val()+",名称为"+$("#parentName").val()+"的菜单";
   			if(type==1){
   				$("#actionInfo").text(info+"添加同级菜单");
   			}else{
@@ -245,7 +245,7 @@
 					}
 				},
 				error:function(e){
-					alert("Net error ,try later.")
+					alert("Net error ,try later.");
 				}
 			});
   		}
@@ -301,7 +301,7 @@
 								</p>	
 								<p>
 									<label>功能描述: </label>
-									<textarea id="description" maxlength="100" class="field size5" rows="3" cols="50" ></textarea>
+									<textarea id="description" class="field size5" rows="3" cols="50" ></textarea>
 								</p>	
 						</div>
 						<div class="buttons">

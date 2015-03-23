@@ -217,7 +217,7 @@
 		</div>
 		<!-- 弹出框DIV，两个同时显示，mask负责将背景灰掉；div_op负责显示 -->
 	    <div class="mask" style="display:none;"></div>
-	    <div class="box"  style="display:none;position:absolute;top:50%;left:50%;width: 520px;height:auto;z-index: 999; margin: -150px 0px 0px -260px;" id="addDiv">
+	    <div class="box"  style="display:none;position:absolute;top:45%;left:50%;width: 520px;height:auto;z-index: 999; margin: -150px 0px 0px -260px;" id="addDiv">
 				<!-- Box Head -->
 				<div class="box-head">
 					<h2 class="left" style="color: #fff;font-weight: normal;font-size: 15px;">添加新角色(点击保存按钮或者敲击Enter键完成保存)</h2>
