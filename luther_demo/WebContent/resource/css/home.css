@@ -77,8 +77,8 @@ a:hover {
 .header-con {
 	width: 1008px;
 	margin: 0 auto;
-	min-height: 80px;
-	_height: 80px;
+	min-height: 200px;
+	_height: 200px;
 	position: relative;
 }
 

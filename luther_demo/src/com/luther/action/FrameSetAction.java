@@ -7,8 +7,10 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.luther.pojo.ActionResponse;
 import com.luther.util.StringUtil;
 
 
@@ -38,7 +40,7 @@ public class FrameSetAction {
 		ModelAndView view = new ModelAndView("admin/main_header");
 		List<HeaderMenu> list = new ArrayList<HeaderMenu>();
 		//一级菜单
-		list.add(new HeaderMenu(1,"首页","index",0));
+		list.add(new HeaderMenu(1,"首页","home",0));
 		list.add(new HeaderMenu(2,"产品中心","productInfo",0));
 		list.add(new HeaderMenu(3,"公司地址","addressInfo",0));
 		list.add(new HeaderMenu(4,"联系我们","contactUs",0));
@@ -50,6 +52,29 @@ public class FrameSetAction {
 		return view;
 	}
 	
+	
+	@RequestMapping(value="/getMenus")
+	@ResponseBody
+	public ActionResponse getMenus(HttpSession session){
+		ActionResponse response = new ActionResponse();
+		List<HeaderMenu> list = new ArrayList<HeaderMenu>();
+		//一级菜单
+		list.add(new HeaderMenu(1,"首页","home",0));
+		list.add(new HeaderMenu(2,"产品中心","productInfo",0));
+		list.add(new HeaderMenu(3,"公司地址","addressInfo",0));
+		list.add(new HeaderMenu(4,"联系我们","contactUs",0));
+		//二级菜单
+		list.add(new HeaderMenu(5,"产品展示","productDemo",1));
+		list.add(new HeaderMenu(6,"产品说明","productDetail",1));
+		System.out.println("StringUtil.toJson(list):"+StringUtil.toJson(list));
+		
+		response.setResult(list);
+		response.setStatus(true);
+		return response;
+	}
+	
+	
+	
 	@RequestMapping(value="/aboutMe")
 	public ModelAndView aboutMe(){
 		ModelAndView view = new ModelAndView("admin/about_me");
@@ -59,6 +84,12 @@ public class FrameSetAction {
 	@RequestMapping(value="/footer")
 	public ModelAndView footer(){
 		ModelAndView view = new ModelAndView("admin/main_footer");
+		return view;
+	}
+	
+	@RequestMapping(value="/home")
+	public ModelAndView home(){
+		ModelAndView view = new ModelAndView("admin/index");
 		return view;
 	}
 	

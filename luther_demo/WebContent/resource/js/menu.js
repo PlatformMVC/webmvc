@@ -1,3 +1,35 @@
+$(document).ready(function(e) {
+	var menus = getMenus();
+	var html = formatMenus(menus);
+	$("#menus").append(html);
+	menuEvent();
+});
+
+function getMenus(){
+	var menus = [];
+	$.ajax({
+		type : "post",
+		url : basePath+"/frame/getMenus", 
+		data : {
+		},
+		dataType : "json",
+		async:false,
+		success : function(data) {
+			if(data.status){
+				menus = data.result;
+			}else{
+				alert(data.description);
+			}
+		},
+		error : function(XMLHttpRequest, textStatus, errorThrown) {
+			if(textStatus=="error"){
+				alert("暂时无法连接服务器，请稍后重试");
+			}
+		}
+	});
+	return menus;
+}
+
 /**
  * 滑过li的时候，显示ul
  */
@@ -17,6 +49,11 @@ function menuEvent(){
 	}).mouseleave(function(){
 		$(this).css('background-color','#ffffff');
 		$(this).find('span').css('color','#333333');
+	}).click(function(){
+		var href = $(this).attr("href");
+		console.log("href:"+href);
+		window.parent.document.getElementById("container").
+					src=path+href;
 	});
 }
 

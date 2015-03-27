@@ -15,7 +15,7 @@
   <!--效果html开始-->
   <div class="main">
     <div class="left">
-      <div class="mod18"> <span id="prev" class="btn prev"></span> <span id="next" class="btn next"></span> <span id="prevTop" class="btn prev"></span> <span id="nextTop" class="btn next"></span>
+      <div class="mod18"> <span id="prev" class="btn prev"></span> <span id="next" class="btn next"></span> <span id="prevTop" class="btn prev">上一页</span> <span id="nextTop" class="btn next">下一页</span>
         <div id="picBox" class="picBox">
           <ul class="cf">
             <li> <a href="http://www.internetke.com" target="_blank"><img style="width:526px;height:377px;" src="resource/images/2.jpg" alt=""/></a> <span>紫色复古风席卷欧美，你赶上潮流了吗</span> </li>
