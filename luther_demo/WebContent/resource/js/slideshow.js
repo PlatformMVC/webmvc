@@ -4,6 +4,14 @@ $(window).load(function(){
 	slideObj.autoPlay();
 });
 
+/**
+ * 利用canvas实现图片的自动切换效果
+ * @param slideSelector
+ * @param imgSelector
+ * @param arrowSelector
+ * @param activeClass
+ * @returns
+ */
 function SlideShow(slideSelector, imgSelector,arrowSelector,activeClass) {
 	//DIV属性信息
 	this.slideSelector = slideSelector || '#slideshow li';

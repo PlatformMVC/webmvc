@@ -40,6 +40,8 @@ public class UserService {
 		TbUser user = userDao.queryByName(loginName);
 		if(user==null){
 			response.setDescription("用户名和密码不一致!");
+		}else if(user.getRoleId()==null){
+			response.setDescription("用户尚未分配角色!");
 		}else if(user.getStatus()==0){
 			response.setDescription("该用户已被禁用，如有疑问请致电管理员:58132588！");
 		}else if(EncryptUtil.checkByMD5(userPwd, user.getUserPwd())){
@@ -143,6 +145,11 @@ public class UserService {
 	 */
 	public ActionResponse queryAuthority(TbUser user) {
 		ActionResponse response = new ActionResponse();
+		if(user==null||user.getRoleId()==null){
+			response.setDescription("用户尚未分配角色!");
+			return response;
+		}
+		
 		List<TbMenu> list = userDao.queryAuthority(user.getRoleId());
 		response.setResult(list);
 		response.setStatus(true);
