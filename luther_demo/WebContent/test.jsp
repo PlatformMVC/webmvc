@@ -1,105 +1,81 @@
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta charset="UTF-8">
+<title>Three.js チュートリアル１</title>
+<script src="resource/js/three.min.js"></script>
 <style type="text/css">
-html,body,div,ul,li,a{
-                    margin:0;   
-                    padding:0;  
-                    list-style:none;
-}
-a, a:hover{
- color:#000;
- border:0;
- text-decoration:none;
-}
-    #warp,#head,#main,#foot
-{
-    width: 962px;
-}
-/*设置居中*/
-#warp{
-    margin: 0 auto;
-}
-#head{
-            height:132px;
-            position:relative;
-}
-.logo{
-        position:absolute;
-        top:17px;
-}
-.head_pic{
-            position:absolute;
-            top:17px;
-            left:420px;
-}
-.sc{
-            position:absolute;
-            right:5px;
-            top:12px;
-}
-.sc a{
-            padding-left:20px;
-            color:#666;
-}
-.nav{
-        width:960px;
-        height:42px;
-        line-height:42px;
-        position:absolute;
-        bottom:0px;
-        background:url(img/nav_bj.jpg) no-repeat center;
-}
-.nav ul{
-            float:left;
-            padding:0 10px;
-}
-.nav li{
-            float:left;
-            background:url(img/li_bj.jpg) no-repeat right center;
-            padding-right:40px;
-            padding-left:20px;
-            text-align:center;
-            display:inline;
-}
-.nav li a{
-                font-size:14px;
-                font-family:Microsoft YaHei !important;
-                white-space:nowrap;
-}
-.nav li a:hover{
-                    color:#FBECB7;
+div#canvas-frame {
+    border: none;
+    cursor: pointer;
+    width: 600px;
+    height: 600px;
+    background-color: #EEEEEE;
 }
 </style>
-<title></title>
+<script>
+    var renderer;
+    function initThree() {
+        width = document.getElementById('canvas-frame').clientWidth;
+        height = document.getElementById('canvas-frame').clientHeight;
+        renderer = new THREE.WebGLRenderer({
+            antialias : true
+        });
+        renderer.setSize(width, height);
+        document.getElementById('canvas-frame')
+                .appendChild(renderer.domElement);
+        renderer.setClearColorHex(0xFFFFFF, 1.0);
+    }
+
+    var camera;
+    function initCamera() {
+        camera = new THREE.PerspectiveCamera(45, width / height, 1, 10000);
+        camera.position.x = 100;
+        camera.position.y = 20;
+        camera.position.z = 50;
+        camera.up.x = 0;
+        camera.up.y = 0;
+        camera.up.z = 1;
+        camera.lookAt({
+            x : 0,
+            y : 0,
+            z : 0
+        });
+    }
+    var scene;
+    function initScene() {
+        scene = new THREE.Scene();
+    }
+    var light;
+    function initLight() {
+        light = new THREE.DirectionalLight(0xFF0000, 1.0, 0);
+        light.position.set(100, 100, 200);
+        scene.add(light);
+    }
+    var cube;
+    function initObject() {
+        cube = new THREE.Mesh(new THREE.CubeGeometry(50, 50, 50), //形状の設定
+        new THREE.MeshLambertMaterial({
+            color : 0xff0000
+        }) //材質の設定
+        );
+        scene.add(cube);
+        cube.position.set(0, 0, 0);
+    }
+    function threeStart() {
+        initThree();
+        initCamera();
+        initScene();
+        initLight();
+        initObject();
+        renderer.clear();
+        renderer.render(scene, camera);
+    }
+</script>
 </head>
-<body>
-    <div id="warp">
-        <div id="head">
-            <div class="logo"><img src="resource/images/vine.jpg" /></div>
-            <div class="head_pic"><img src="resource/images/th.gif" /></div>
-            <div class="sc">
-                <a href=""><img src="resource/images/add.gif" /></a>
-                <a href=""><img src="resource/images/add.gif" /></a>
-                <a href=""><img src="resource/images/add.gif" /></a>
-            </div>
-            <div class="nav">
-                <ul>
-                    <li><a href="">首页</a></li>
-                    <li><a href="">关于我们</a></li>
-                    <li><a href="">团队文化</a></li>
-                    <li><a href="">公司动态</a></li>
-                    <li><a href="">资讯参考</a></li>
-                    <li><a href="">业务中心</a></li>
-                    <li><a href="">合作银行</a></li>
-                    <li><a href="">联系我们</a></li>
-                </ul>
-            </div>
-        </div>
-        <div id="main"></div>
-        <div id="foot"></div>
-    </div>
+
+<body onload="threeStart();">
+    <div id="canvas-frame"></div>
 </body>
 </html>
