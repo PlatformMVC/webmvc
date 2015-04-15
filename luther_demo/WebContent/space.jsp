@@ -46,9 +46,7 @@ function init() {
 			context.beginPath();
 			context.arc( 0, 0, 1, 0, PI2, true );
 			context.fill();
-
 		}
-
 	} );
 
 	var i = 0;
